@@ -1,4 +1,4 @@
-require 'base'
+#require 'rubygems'
 require 'sqlite3'
 require 'activerecord'
 

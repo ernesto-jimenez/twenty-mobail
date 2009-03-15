@@ -28,6 +28,11 @@ class Tuenti
   rescue WWW::Mechanize::ResponseCodeError
   end
   
+  def login?
+    agent, reply = get_logged_in_agent_and_csfr
+    return !reply.nil?
+  end
+  
   private 
   def get_logged_in_agent_and_csfr
     agent = WWW::Mechanize.new { |agent|
@@ -47,7 +52,8 @@ class Tuenti
 
     form.submit
 
-    csfr = agent.get('http://m.tuenti.com').body.match(/csfr=([a-z0-9]+)/)[1]
+    csfr = agent.get('http://m.tuenti.com').body.match(/csfr=([a-z0-9]+)/)
+    csfr = csfr[1] if csfr
 
     return agent, csfr
   end
@@ -64,4 +70,3 @@ class Tuenti
     "http://m.tuenti.com/?m=profile&func=process_set_status&from=home&csfr=#{csfr}"
   end
 end
-

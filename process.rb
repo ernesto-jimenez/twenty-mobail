@@ -1,4 +1,7 @@
 require 'base'
+require 'process/alta'
+require 'process/baja'
+require 'process/estoy'
 
 module Process
   class Proxy
@@ -24,7 +27,7 @@ module Process
         raise NameError, "#{class_name.inspect} is not a valid constant name!"
       end
       
-      require "process/#{class_name.downcase}"
+      #require "process/#{class_name.downcase}"
       return contantize(class_name)
     end
     
