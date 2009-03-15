@@ -1,6 +1,6 @@
 require 'gmailer'
 require 'digest/md5'
-require 'open_movilforum/mms/image_download'
+require 'lib/open_movilforum/mms/image_download'
 
 module OpenMovilforum
   module MMS

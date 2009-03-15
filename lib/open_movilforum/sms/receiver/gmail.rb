@@ -1,5 +1,5 @@
 require 'gmailer'
-require 'open_movilforum/sms/receiver/base'
+require 'lib/open_movilforum/sms/receiver/base'
 
 module OpenMovilforum
   module SMS

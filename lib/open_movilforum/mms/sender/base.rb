@@ -1,5 +1,5 @@
-require 'open_movilforum/mms/sender/gmail'
-require 'open_movilforum/mms/sender/movistar'
+require 'lib/open_movilforum/mms/sender/gmail'
+require 'lib/open_movilforum/mms/sender/movistar'
 
 module OpenMovilforum
   module MMS

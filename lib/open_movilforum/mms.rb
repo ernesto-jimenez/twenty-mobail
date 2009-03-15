@@ -1,5 +1,6 @@
-require 'open_movilforum/mms/image_download'
-require 'open_movilforum/mms/sender'
+require 'lib/open_movilforum/mms/image_download'
+require 'lib/open_movilforum/mms/sender'
+require 'lib/open_movilforum/mms/receiver'
 
 module OpenMovilforum
   module MMS

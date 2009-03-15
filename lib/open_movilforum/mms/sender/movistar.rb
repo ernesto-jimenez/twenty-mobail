@@ -1,6 +1,6 @@
 require 'digest/md5'
 require 'mechanize'
-require 'open_movilforum/mms/image_download'
+require 'lib/open_movilforum/mms/image_download'
 
 ## ATENCIÓN
 # MOVISTAR CAMBIÓ SU WEB A MITAD DEL CONCURSO Y LA API DE OPEN MOVIL FORUM YA NO

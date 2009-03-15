@@ -1,5 +1,5 @@
-require 'open_movilforum/sms/receiver/base'
-require 'open_movilforum/sms/receiver/mail_message'
+require 'lib/open_movilforum/sms/receiver/base'
+require 'lib/open_movilforum/sms/receiver/mail_message'
 require 'gserver'
 
 module OpenMovilforum

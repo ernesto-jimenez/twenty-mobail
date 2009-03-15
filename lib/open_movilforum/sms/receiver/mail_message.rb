@@ -1,4 +1,4 @@
-require 'open_movilforum/sms/receiver/base'
+require 'lib/open_movilforum/sms/receiver/base'
 require 'gserver'
 
 module OpenMovilforum

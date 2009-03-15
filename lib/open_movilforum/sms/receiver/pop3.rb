@@ -1,6 +1,6 @@
 require 'net/pop'
-require 'open_movilforum/sms/receiver/base'
-require 'open_movilforum/sms/receiver/mail_message'
+require 'lib/open_movilforum/sms/receiver/base'
+require 'lib/open_movilforum/sms/receiver/mail_message'
 
 module OpenMovilforum
   module SMS
