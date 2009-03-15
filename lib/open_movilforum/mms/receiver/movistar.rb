@@ -5,16 +5,13 @@ module OpenMovilforum
     module Receiver
       # MMS receiver through movistar website
       class Movistar
-        LOGIN = {
-          :user => '630348665',
-          :pass => '566843',
-        }
-        
-        # folder in which images will be stored
-        DIR = "/Users/temp/"
-        
         SLEEP_TIME = 60
         
+        def initialize(user, pass)
+          @user = user
+          @pass = pass
+        end
+
         # performs a login into the movistar site
         def login
           begin
@@ -26,16 +23,16 @@ module OpenMovilforum
 
             # step 2. Fill the form
             form = @page.form("loginForm")
-            form.TM_LOGIN = LOGIN[:user]
-            form.TM_PASSWORD = LOGIN[:pass]
+            form.TM_LOGIN = @user
+            form.TM_PASSWORD = @pass
             @page = @agent.submit(form)
           rescue
-            raise "Login failed"  
-          end    
+            raise "Login failed"
+          end
         end
 
         # downloads all messages and deletes them from the inbox
-        def download_messages
+        def download_messages(dir)
           @page = @agent.get("http://www.multimedia.movistar.es/do/mail/folder/view?page=0&order=ascending&field=arrival")
           id = nil
           @page.parser.search('tr[@class="messagesList"]').each do |node|
@@ -47,24 +44,35 @@ module OpenMovilforum
 
 
               file = @agent.get("/do/mail/message/viewAttachment?msgId=#{id}&part=2")
-              file.save_as(DIR + Time.now.to_i.to_s + "_" + from + "." + file.filename.match(/\.jpg|gif|jpeg|png\"?$/)[0].delete("\"")) if file.filename.match(/\.jpg|gif|jpeg|png\"?$/)
-              @agent.post("/do/mail/message/delete?ref=list&deleteNow=true", {"msgIds" => id, "destfid" => "", "field" => "", "order" => "ascending"})  
-            rescue
-              raise "Error while processing a MMS"  
-            end  
+              
+              if extension = file.filename.match(/\.(jpg|gif|jpeg|png)\"?$/)
+                target_file = File.join(dir, "#{Time.now.to_i}_#{from}.#{extension[1]}")
+                file.save_as(target_file)
+              end
+              
+              @agent.post("/do/mail/message/delete?ref=list&deleteNow=true", {"msgIds" => id, "destfid" => "", "field" => "", "order" => "ascending"})
+              
+              yield(from) if block_given?
+            rescue Exception => e
+              puts "Error while processing a MMS"
+              puts e.message
+              e.backtrace.each do |line|
+                puts "    #{line}"
+              end
+            end
           end
         end
 
         # processes all MMS
-        def run_once
+        def run_once(dir, &block)
           login
-          download_messages
+          download_messages(dir, &block)
         end
-        
+
         # daemon
-        def start
+        def start(dir, &block)
           loop do
-            run_once
+            run_once(dir, &block)
             sleep(SLEEP_TIME)
           end
         end

@@ -5,3 +5,8 @@ SMS_RECEIVER_MAIL  = "test.openmovilforum@gmail.com"
 SMS_RECEIVER_PASS  = "12341234"
 SMS_SENDER_PHONE   = MMS_RECEIVER_PHONE
 SMS_SENDER_PASS    = MMS_RECEIVER_PASS
+MMS_QUEUE_DIR      = File.expand_path(File.join(File.dirname(__FILE__), "../received_mms"))
+
+MMS_RECEIVER_SLEEP = 300
+SMS_RECEIVER_SLEEP = 300
+IMG_PUBLISH_SLEEP  = 10

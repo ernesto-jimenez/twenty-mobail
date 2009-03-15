@@ -8,12 +8,14 @@ module Process
       message = words.join(' ')
       
       begin
-        puts "Processing #{message}"
+        log "Processing #{message}"
         get_class(process).run(sender, message)
       rescue Exception => e
-        puts "=> Error on #{Time.now}"
-        puts $!
-        puts e.backtrace.join("\n")
+        log "=> Error on #{Time.now}"
+        puts e.message
+        e.backtrace.each do |line|
+          puts "    #{line}"
+        end
       end
     end
     

@@ -6,7 +6,7 @@ module OpenMovilforum
     module Receiver
       # class Prueba
       #   def self.update(sender, message)
-      #     puts "Recibioms: #{message.inspect} de: #{sender}"
+      #     puts "Recibimos: #{message.inspect} de: #{sender}"
       #   end
       # end
       # 
@@ -23,11 +23,9 @@ module OpenMovilforum
         
         def run_once
           GMailer.connect(@user, @pass) do |g|
-            g.messages(:label => "inbox", :read => false) do |ml|
-              ml.each_msg do |conversation|
+            g.messages(:label => "inbox", :read => false).each_msg do |conversation|
                 self.received conversation.body.gsub(/<[^>]+>/, '')
                 conversation.mark_read
-              end
             end
           end
         end
