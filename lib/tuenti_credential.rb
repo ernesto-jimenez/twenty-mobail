@@ -15,7 +15,6 @@ class TuentiCredential < ActiveRecord::Base
   validates_uniqueness_of :phone
   
   validates_presence_of :email
-  validates_uniqueness_of :email, :scope => :phone
   
   validates_presence_of :password
 end

@@ -14,7 +14,8 @@ module Process
         
         sms_sender = OpenMovilforum::SMS::Sender.new(SMS_SENDER_PHONE, SMS_SENDER_PASS)
         sms_sender.send(phone, "Ya se ha cambiado tu estado! :)")
-      else
+      else  
+        sms_sender.send(phone, "No podemos cambiar tu estado hasta que des de alta tu cuenta en tuenti. Envía un sms a #{SMS_RECEIVER_PHONE} con: ALTA tu-email-en-tuenti tu-clave-de-tuenti")
         log "No credentials for #{phone}, user notified"
       end
     end
