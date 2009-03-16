@@ -4,7 +4,8 @@ GEMS = {
   'daemons'      => "1.0.10",
   'sqlite3-ruby' => "1.2.4",
   'nokogiri'     => "1.2.2",
-  'activerecord' => "> 2.0"
+  'activerecord' => "> 2.0",
+  'hoe'          => ">= 1.9.0"
 }
 
 def try_gem(gem_name, version, print=true)
