@@ -2,7 +2,7 @@ require 'rubygems'
 require File.join(File.dirname(__FILE__), 'config/constants')
 
 $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
-$LOAD_PATH << File.join(File.dirname(__FILE__), 'process')
+$LOAD_PATH << File.join(File.dirname(__FILE__), 'app')
 $LOAD_PATH << File.dirname(__FILE__)
 
 def create_dir(path)
