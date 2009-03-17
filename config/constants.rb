@@ -3,7 +3,7 @@ MMS_RECEIVER_PHONE = "630348665"
 MMS_RECEIVER_PASS  = "566843"
 
 # SMS receiver credentials
-SMS_RECEIVER_PHONE = "638444957"
+SMS_RECEIVER_PHONE = "630348665"
 SMS_RECEIVER_MAIL  = "test.openmovilforum@gmail.com"
 SMS_RECEIVER_PASS  = "12341234"
 
@@ -31,4 +31,13 @@ DB_CONFIG = {
   :database => DB_NAME,
   :username => DB_USER,
   :password => DB_PASS
+}
+
+# Options for daemons
+DAEMON_OPTIONS = {
+  :log_output => true,
+  :backtrace  => true,
+  :dir_mode => :normal,
+  :dir => File.join(File.dirname(File.expand_path(__FILE__)), '../logs'),
+  :multiple => false
 }

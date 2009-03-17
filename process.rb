@@ -1,4 +1,3 @@
-require 'base'
 require 'process/alta'
 require 'process/baja'
 require 'process/estoy'

@@ -3,9 +3,7 @@ require 'open_movilforum'
 require 'process'
 require 'daemons'
 
+create_dir(DAEMON_OPTIONS[:dir]) if DAEMON_OPTIONS[:dir]
+
 server_type = ENV['SERVER_TYPE'] || 'gmail'
-options = {
-  :log_output => true,
-  :backtrace  => true
-}
-Daemons.run(File.join(File.dirname(__FILE__), "sms_receivers/#{server_type}.rb"), options)
+Daemons.run(File.join(File.dirname(__FILE__), "sms_receivers/#{server_type}.rb"), DAEMON_OPTIONS)

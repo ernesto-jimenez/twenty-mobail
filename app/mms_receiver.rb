@@ -3,11 +3,9 @@ require 'open_movilforum'
 require 'tuenti_credential'
 require 'daemons'
 
-options = {
-  :log_output => true,
-  :backtrace  => true
-}
-Daemons.run_proc("mms_receiver.rb", options) do
+create_dir(DAEMON_OPTIONS[:dir]) if DAEMON_OPTIONS[:dir]
+
+Daemons.run_proc("mms_receiver.rb", DAEMON_OPTIONS) do
   create_dir(MMS_QUEUE_DIR)
   
   mms_receiver = OpenMovilforum::MMS::Receiver::Movistar.new(MMS_RECEIVER_PHONE, MMS_RECEIVER_PASS)
@@ -16,8 +14,7 @@ Daemons.run_proc("mms_receiver.rb", options) do
       credentials = TuentiCredential.find_by_phone(phone)
       log "MMS from #{phone}"
       unless credentials
-        sms_sender = OpenMovilforum::SMS::Sender.new(SMS_SENDER_PHONE, SMS_SENDER_PASS)
-        sms_sender.send(phone, "Hemos recibido tu imagen. Para publicarla en tuenti envia un sms a #{SMS_RECEIVER_PHONE} con: ALTA tu-email-en-tuenti tu-clave-de-tuenti")
+        send_sms(phone, "Hemos recibido tu imagen. Para publicarla en tuenti envia un sms a #{SMS_RECEIVER_PHONE} con: ALTA tu-email-en-tuenti tu-clave-de-tuenti")
         log "No credentials for #{phone}, user notified"
       end
     end

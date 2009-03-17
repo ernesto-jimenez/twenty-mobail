@@ -4,12 +4,9 @@ require 'tuenti'
 require 'tuenti_credential'
 require 'daemons'
 
-options = {
-  :log_output => true,
-  :backtrace  => true
-}
+create_dir(DAEMON_OPTIONS[:dir]) if DAEMON_OPTIONS[:dir]
 
-Daemons.run_proc("img_publisher.rb", options) do
+Daemons.run_proc("img_publisher.rb", DAEMON_OPTIONS) do
   create_dir(MMS_QUEUE_DIR)
   keep_running(IMG_PUBLISH_SLEEP) do
     Dir.glob("#{MMS_QUEUE_DIR}/*.*").sort.each do |img_path|
@@ -25,8 +22,7 @@ Daemons.run_proc("img_publisher.rb", options) do
         t.upload_img(img_path)
         log "Uploaded #{img_path}"
         
-        sms_sender = OpenMovilforum::SMS::Sender.new(SMS_SENDER_PHONE, SMS_SENDER_PASS)
-        sms_sender.send(phone, "Ya se ha publicado tu foto en Tuenti! :)")
+        send_sms(phone, "Ya se ha publicado tu foto en Tuenti! :)")
         
         File.delete(img_path)
         log "Removed #{img_path}"

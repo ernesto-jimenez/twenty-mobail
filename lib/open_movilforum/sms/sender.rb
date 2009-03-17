@@ -11,7 +11,7 @@ module OpenMovilforum
         @password = password.to_s
       end
 
-      def send(number, message)
+      def send_sms(number, message)
         number = number.to_s.strip
         raise ArgumentError, "Invalid phone: #{number}" unless number =~ /^\d+$/
         response = Net::HTTP.post_form(URI.parse(URL),
