@@ -26,8 +26,9 @@ Daemons.run_proc("img_publisher.rb", DAEMON_OPTIONS) do
         
         File.delete(img_path)
         log "Removed #{img_path}"
-      else
-        log "No credentials for #{phone}"
+      elsif (Time.now - File.ctime(img_path)) > MMS_TIME_WAITING_FOR_CREDENTIALS
+        log "Timeout (#{File.ctime(img_path).strftime("%y/%m/%d %H:%M:%S")}): removed #{img_path}"
+        File.delete(img_path)
       end
     end
   end
