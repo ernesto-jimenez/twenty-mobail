@@ -13,5 +13,8 @@ Twenty Mobail ha sido desarrollado para el "IV Concurso de Mashups de movilidad 
 
 Consultar también:
 
+* "Wiki del proyecto":http://wiki.github.com/ernesto-jimenez/twenty-mobail.
 * "Documentación del desarrollador":http://wiki.github.com/ernesto-jimenez/twenty-mobail/documentacin-del-desarrollador.
 * "Manual de despliegue":http://wiki.github.com/ernesto-jimenez/twenty-mobail/manual-de-despliegue.
+
+<big style="color:red">*¡Importante! Los servicios de OMF (en especial la recepción de SMS) están dando problemas*</big>. <big>Si en el momento de probar la aplicación estuvieran caídos (p.ej no llega un mensaje de respuesta a un ALTA en la aplicación), se puede recurrir a simular un envío de SMS <a href="http://www.ladybenko.net/junk/twenty.php">a través de este formulario</a>.</big>
