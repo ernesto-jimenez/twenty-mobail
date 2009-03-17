@@ -1,0 +1,17 @@
+h1. ¿Qué es Twenty Mobail?
+
+Twenty Mobail  permite subir *fotos* a "Tuenti":http://www.tuenti.com y actualizar el *estado* del usuario, simplemente enviando mensajes desde un teléfono móvil.
+
+Aunque Tuenti cuenta con una versión de la red social especial para móviles (ver "charla de Tuenti Mobile en la Barcamp3":http://vimeo.com/2212799), Twenty Mobail la complementa, ya que ofrece la posibilidad de actualizar la página de usuario sin necesidad de disponer de un smartphone ni de una conexión a Internet móvil. Por otra parte, muchos de los usuarios de móvil en España están acostumbrados al envío de SMS y MMS, y no tanto a utilizar la conexión a Internet de su teléfono.
+
+Twenty Mobail ha sido desarrollado para el "IV Concurso de Mashups de movilidad de Open Movilforum":http://open.movilforum.com/concurso/4 y el código está publicado bajo la licencia "Apache 2.0":http://www.apache.org/licenses/LICENSE-2.0.html.
+
+*Desarrolladores*:
+
+* Ernesto Jiménez Caballero (ernesto.jimenez ARROBA tractis PUNTO com)
+* Belén Albeza González (benko ARROBA ladybenko PUNTO net)
+
+Consultar también:
+
+* "Documentación del desarrollador":http://wiki.github.com/ernesto-jimenez/twenty-mobail/documentacin-del-desarrollador.
+* "Manual de despliegue":http://wiki.github.com/ernesto-jimenez/twenty-mobail/manual-de-despliegue.
